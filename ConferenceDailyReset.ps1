@@ -8,7 +8,7 @@ For ($i = 1; $i -le 3; $i++)
     # Définition compte administrateur
 
     $SecurePassword = ConvertTo-SecureString "AJCFormation2019!" -AsPlainText -Force
-    $Credential = New-Object System.Management.Automation.PSCredential ("VMAdministrator", $SecurePassword)
+    $Credential = New-Object System.Management.Automation.PSCredential ($env:USERNAME, $SecurePassword)
 
     # Création de la VM
 
