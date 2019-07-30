@@ -1,6 +1,6 @@
-param([string]$resourceGroup)
+param([int]$nbVM,[string]$resourceGroup)
 
-For ($i = 1; $i -le 3; $i++)
+For ($i = 1; $i -le $nbVM; $i++)
 {
     $vmName = "ConferenceDemo" + $i
     Write-Host "Creating VM: " $vmName
@@ -12,7 +12,7 @@ For ($i = 1; $i -le 3; $i++)
 
     # Création de la VM
 
-    New-AzVm -ResourceGroupName $resourceGroup -Name $vmName -OpenPorts 22 -Image UbuntuLTS -Credential $Credential
+    New-AzVm -ResourceGroupName $resourceGroup -Name $vmName -OpenPorts 22, 80, 443 -Image UbuntuLTS -Credential $Credential
 
     # Ajout de la clé publique SSH
 
